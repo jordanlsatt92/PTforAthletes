@@ -109,7 +109,7 @@ router.put(
           .json({ errors: [{ msg: "No account associated with email" }] });
       }
 
-      const isMatch = bcrypt.compare(security_question, user.security_question);
+      const isMatch = await bcrypt.compare(security_question, user.security_question);
 
       if (isMatch) {
 
