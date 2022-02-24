@@ -582,3 +582,55 @@ button {
   right: 2rem;
   display: inline-block;
 }
+
+.video-container {
+  display: flex;
+}
+
+.video-child {
+  flex: 1;
+  border: 2px solid #17a2b8;
+  margin-right: 20px;
+  text-align: center;
+  height: flex;
+  width: flex;
+}  
+
+.video-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.video-background {
+  opacity: .9;
+  height: 150px;
+  width: 100%;
+  background: rgba(200, 200, 200, 1);
+  color: #000000;
+  border: #000000;
+  margin: auto;
+  padding: 5px;
+  text-shadow: -1px 1px 0 #FFF,
+                          1px 1px 0 #FFF,
+                         1px -1px 0 #FFF,
+                        -1px -1px 0 #FFF;
+}
+
+.video-text {
+  opacity: 1;
+  margin-top: auto;
+  vertical-align: middle;
+}
+
+.player-wrapper {
+  place-self: center;
+}
+
+.video-title {
+  font-size: larger;
+  color: var(--primary-color);
+  margin-top: 2px;
+
+}

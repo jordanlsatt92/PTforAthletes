@@ -15,6 +15,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  symptoms: null,
 };
 
 function authReducer(state = initialState, action) {
@@ -49,7 +50,8 @@ function authReducer(state = initialState, action) {
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null
+        user: null,
+        symptoms: null,
       };
     default:
       return state;

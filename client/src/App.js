@@ -9,7 +9,8 @@ import Alert from "./components/layout/Alert";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import Symptoms from "./components/symptoms/Symptoms";
 import Symptom from "./components/symptom/Symptom";
-
+import Videos from "./components/videos/Videos";
+import Video from "./components/video/Video";
 import "./App.css";
 
 //Redux
@@ -46,6 +47,14 @@ const App = () => {
             <Route
               path="/symptoms/:id"
               element={<PrivateRoute component={Symptom} />}
+            />
+            <Route
+              path="/videos"
+              element={<PrivateRoute component={Videos} />}
+            />
+            <Route
+              path="/videos/:id"
+              element={<PrivateRoute component={Video} />}
             />
           </Routes>
         </Fragment>

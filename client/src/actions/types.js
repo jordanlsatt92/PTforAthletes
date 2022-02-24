@@ -16,3 +16,6 @@ export const ADD_SYMPTOM = 'ADD_SYMPTOM';
 export const GET_SYMPTOM = 'GET_SYMPTOM';
 export const ADD_UPDATE = 'ADD_UPDATE';
 export const REMOVE_UPDATE = 'REMOVE_UPDATE';
+export const GET_VIDEOS = 'GET_VIDEOS';
+export const VIDEO_ERROR = 'VIDEO_ERROR';
+export const GET_VIDEO = 'GET_VIDEO';
