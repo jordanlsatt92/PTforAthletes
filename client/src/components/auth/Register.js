@@ -94,6 +94,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             required
           />
         </div>
+        <small className="form-text">
+          By registering for an account, you are agreeing to the site's <Link to="/terms&conditions">Terms & Conditions</Link>
+        </small>
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">

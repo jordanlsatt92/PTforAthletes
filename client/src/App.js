@@ -12,7 +12,9 @@ import Symptom from "./components/symptom/Symptom";
 import Videos from "./components/videos/Videos";
 import Video from "./components/video/Video";
 import "./App.css";
-
+import About from "./components/staticComponents/About";
+import SuggestedVideos from "./components/videos/SuggestedVideos";
+import TermsAndConditions from "./components/staticComponents/TermsAndConditions";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -38,8 +40,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/password_reset" element={<ResetPassword />} />
+            <Route path="/terms&conditions" element={<TermsAndConditions />} />
             <Route
               path="/symptoms"
               element={<PrivateRoute component={Symptoms} />}
@@ -55,6 +59,10 @@ const App = () => {
             <Route
               path="/videos/:id"
               element={<PrivateRoute component={Video} />}
+            />
+            <Route
+              path="/suggested_videos"
+              element={<PrivateRoute component={SuggestedVideos} />}
             />
           </Routes>
         </Fragment>

@@ -11,6 +11,10 @@ const Symptoms = ({ getSymptoms, symptom: { symptoms } }) => {
   }, [getSymptoms]);
 
   const pdfGenerate = () => {
+    if (symptoms.length === 0){
+      window.alert('You currently have no symptoms to download.')
+      return null;
+    }
     var pdfMake = require('pdfmake/build/pdfmake.js');
     var pdfFonts = require('pdfmake/build/vfs_fonts.js');
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
