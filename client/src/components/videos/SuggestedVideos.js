@@ -24,6 +24,7 @@ const SuggestedVideos = ({
         let symp = symptoms[i];
         for (let j = 0; j < symp.effected_parts.length; j++){
             if (vid.related_parts.toString().toLowerCase().includes(symp.effected_parts[j].toString().toLowerCase())){
+              console.log(symp.effected_parts[j].toString().toLowerCase());
                 return true;
             } 
         }

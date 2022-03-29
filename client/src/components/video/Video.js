@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getVideo } from "../../actions/video";
 import { Link, useParams } from "react-router-dom";
-import VideoItem from "../videos/VideoItem";
 import ReactPlayer from "react-player";
 
 const Video = ({ getVideo, video: {video, loading} }) => {
@@ -18,6 +17,9 @@ const Video = ({ getVideo, video: {video, loading} }) => {
     <div className="container">
       <Link to="/videos" className="btn">
         All Videos
+      </Link>
+      <Link to="/suggested_videos" className="btn">
+        Suggested Videos
       </Link>
       <ReactPlayer className="player-wrapper" url={video.url} controls={true} width='auto' height='550px' />
       <div className="video-title">{video.title}</div>

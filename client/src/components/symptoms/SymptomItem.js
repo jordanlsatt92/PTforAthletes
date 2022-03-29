@@ -12,14 +12,14 @@ const SymptomItem = ({
   symptom: { _id, user, name, effected_parts, description, updates, date },
 }) => {
   return (
-    <div className="post bg-white p-1 my-1">
+    <div className="symptom bg-white p-1 my-1">
       <div>
         <h4>{name}</h4>
       </div>
       <div>
         <p className="my-1">Effected Body Part(s): {effected_parts.join(", ")}</p>
         <p className="my-1">{description}</p>
-        <p className="post-date">
+        <p className="symptom-date">
           Created <Moment format="MM/DD/YYYY">{date}</Moment>
         </p>
         {showActions && (

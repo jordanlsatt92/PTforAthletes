@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #4682B4;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -263,30 +263,7 @@ button {
   font: inherit;
 }
 
-.form .social-input {
-  display: flex;
-}
 
-.form .social-input i {
-  padding: 0.5rem;
-  width: 4rem;
-}
-
-.form .social-input i.fa-twitter {
-  color: #38a1f3;
-}
-.form .social-input i.fa-facebook {
-  color: #3b5998;
-}
-.form .social-input i.fa-instagram {
-  color: #3f729b;
-}
-.form .social-input i.fa-youtube {
-  color: #c4302b;
-}
-.form .social-input i.fa-linkedin {
-  color: #0077b5;
-}
 
 .table th,
 .table td {
@@ -453,28 +430,28 @@ button {
   flex-basis: 20%;
 }
 
-/* Posts Page */
-.post-form .post-form-header {
+/* Symptoms Page */
+.symptom-form .symptom-form-header {
   background: var(--primary-color);
   padding: 0.5rem;
 }
 
-.post {
+.symptom {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
 }
 
-.post > div:first-child {
+.symptom > div:first-child {
   text-align: center;
 }
 
-.post img {
+.symptom img {
   width: 100px;
 }
 
-.post .comment-count {
+.symptom .comment-count {
   background: var(--light-color);
   color: var(--primary-color);
   padding: 0.1rem 0.2rem;
@@ -482,7 +459,7 @@ button {
   font-size: 0.8rem;
 }
 
-.post .post-date {
+.symptom .symptom-date {
   color: #aaa;
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
@@ -567,11 +544,11 @@ button {
     margin-bottom: 0.2rem;
   }
 
-  .post {
+  .symptom {
     grid-template-columns: 1fr;
   }
-  .post a,
-  .post button {
+  .symptom a,
+  .symptom button {
     padding: 0.3rem 0.4rem;
   }
 }
@@ -589,7 +566,7 @@ button {
 
 .video-child {
   flex: 1;
-  border: 2px solid #17a2b8;
+  border: 2px solid var(--primary-color);
   margin-right: 20px;
   text-align: center;
   height: flex;
@@ -639,4 +616,11 @@ button {
   margin-right: auto;
   width: 1025px;
   height: 917px;
+}
+
+.skeletal-picture {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1025px;
+  height: 1025px;
 }

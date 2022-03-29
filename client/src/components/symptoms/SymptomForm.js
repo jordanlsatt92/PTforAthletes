@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addSymptom } from "../../actions/symptom";
-import MuscleAnatomy from "../../img/MusculatureAnatomyDiagram.jpg";
+import MuscleAnatomy from "../../img/MusculatureAnatomy.jpg";
+import SkeletalAnatomy from "../../img/SkeletalAnatomy.jpg";
 import { setAlert } from "../../actions/alert";
 
 const SymptomForm = ({ addSymptom, setAlert }) => {
@@ -17,16 +18,25 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const [showAnatomy, setShowAnatomy] = useState(false);
+  const [showMusculatureAnatomy, setshowMusculatureAnatomy] = useState(false);
 
-  const showAnatomyHandler = () => {
-    if (!showAnatomy) setShowAnatomy(true);
-    else setShowAnatomy(false);
+  const showMusculatureAnatomyHandler = () => {
+    if (!showMusculatureAnatomy) setshowMusculatureAnatomy(true);
+    else setshowMusculatureAnatomy(false);
   };
 
+  const [showSkeletalAnatomy, setShowSkeletalAnatomy] = useState(false);
+
+  const showSkeletalAnatomyHandler = () => {
+    if (!showSkeletalAnatomy) setShowSkeletalAnatomy(true);
+    else setShowSkeletalAnatomy(false);
+  };
   const addAnatomy = (str) => {
     if (formData.effected_parts.toLowerCase().includes(str.toLowerCase())) {
-      setAlert("You have already added " + str  + " to the effected anatomy", "danger");
+      setAlert(
+        "You have already added " + str + " to the effected anatomy",
+        "danger"
+      );
       return;
     }
     if (
@@ -118,7 +128,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
   // };
 
   return (
-    <div className="post-form">
+    <div className="symptom-form">
       <div className="bg-primary p">
         <h3>Add a new symptom</h3>
       </div>
@@ -166,10 +176,27 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
           required
         ></textarea>
         <input type="submit" className="btn btn-dark my-1" value="Submit" />
-        <button className="btn btn-dark my-1" onClick={showAnatomyHandler}>
-          {showAnatomy ? <div>Hide Anatomy</div> : <div>Show Anatomy</div>}
+        <button
+          className="btn btn-dark my-1"
+          onClick={showMusculatureAnatomyHandler}
+        >
+          {showMusculatureAnatomy ? (
+            <div>Hide Musculature Anatomy</div>
+          ) : (
+            <div>Musculature Anatomy</div>
+          )}
         </button>
-        {showAnatomy && (
+        <button
+          className="btn btn-dark my-1"
+          onClick={showSkeletalAnatomyHandler}
+        >
+          {showSkeletalAnatomy ? (
+            <div>Hide Skeletal Anatomy</div>
+          ) : (
+            <div>Skeletal Anatomy</div>
+          )}
+        </button>
+        {showMusculatureAnatomy && (
           <div>
             <img
               className="anatomy-picture"
@@ -459,9 +486,9 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
                 shape="poly"
               />
               <area
-                onClick={() => addAnatomy("Erector Spinae")}
-                alt="Erector Spinae"
-                title="Erector Spinae"
+                onClick={() => addAnatomy("Lower Back")}
+                alt="Lower Back"
+                title="Lower Back"
                 coords="531,398,539,346,563,334,593,358,600,397,570,410"
                 shape="poly"
               />
@@ -513,6 +540,228 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
                 title="Calves"
                 coords="815,779,858,674,847,633,816,648,795,719,804,774"
                 shape="poly"
+              />
+              <area
+                onClick={() => addAnatomy("Foot")}
+                alt="Foot"
+                title="Foot"
+                coords="155,888,155,874,166,839,246,842,259,888"
+                shape="poly"
+              />
+              <area
+                onClick={() => addAnatomy("Foot")}
+                alt="Foot"
+                title="Foot"
+                coords="525,856,602,855,615,886,509,884,511,866"
+                shape="poly"
+              />
+              <area
+                onClick={() => addAnatomy("TFL")}
+                alt="TFL"
+                title="TFL"
+                coords="907,392,923,407,925,447,914,480,895,452,906,421"
+                shape="poly"
+              />
+              <area
+                onClick={() => addAnatomy("IT band")}
+                alt="IT band"
+                title="IT band"
+                coords="881,540,893,553,881,611,878,632,870,632,874,604,881,563"
+                shape="poly"
+              />
+              <area
+                onClick={() => addAnatomy("Foot")}
+                alt="Foot"
+                title="Foot"
+                coords="797,851,855,832,929,867,929,884,798,880"
+                shape="poly"
+              />
+            </map>
+          </div>
+        )}
+        {showSkeletalAnatomy && (
+          <div>
+            <img
+              className="skeletal-picture"
+              src={SkeletalAnatomy}
+              alt="Skeletal Anatomy"
+              useMap="#image-map1"
+            />
+            <map name="image-map1">
+              <area
+                onClick={() => addAnatomy("Neck")}
+                alt="Neck"
+                title="Neck"
+                coords="263,187,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Neck")}
+                alt="Neck"
+                title="Neck"
+                coords="603,177,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Shoulder")}
+                alt="Shoulder"
+                title="Shoulder"
+                coords="329,221,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Shoulder")}
+                alt="Shoulder"
+                title="Shoulder"
+                coords="195,221,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Shoulder")}
+                alt="Shoulder"
+                title="Shoulder"
+                coords="527,221,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Shoulder")}
+                alt="Shoulder"
+                title="Shoulder"
+                coords="677,221,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Elbow")}
+                alt="Elbow"
+                title="Elbow"
+                coords="715,378,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Elbow")}
+                alt="Elbow"
+                title="Elbow"
+                coords="163,375,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Elbow")}
+                alt="Elbow"
+                title="Elbow"
+                coords="375,374,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Elbow")}
+                alt="Elbow"
+                title="Elbow"
+                coords="499,372,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Wrist")}
+                alt="Wrist"
+                title="Wrist"
+                coords="131,506,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Wrist")}
+                alt="Wrist"
+                title="Wrist"
+                coords="397,514,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Wrist")}
+                alt="Wrist"
+                title="Wrist"
+                coords="475,510,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Wrist")}
+                alt="Wrist"
+                title="Wrist"
+                coords="747,506,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Knee")}
+                alt="Knee"
+                title="Knee"
+                coords="223,707,20"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Knee")}
+                alt="Knee"
+                title="Knee"
+                coords="301,711,20"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Knee")}
+                alt="Knee"
+                title="Knee"
+                coords="561,709,20"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Knee")}
+                alt="Knee"
+                title="Knee"
+                coords="643,707,20"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Ankle")}
+                alt="Ankle"
+                title="Ankle"
+                coords="231,917,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Ankle")}
+                alt="Ankle"
+                title="Ankle"
+                coords="295,919,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Ankle")}
+                alt="Ankle"
+                title="Ankle"
+                coords="569,911,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Ankle")}
+                alt="Ankle"
+                title="Ankle"
+                coords="633,913,17"
+                shape="circle"
+              />
+              <area
+                onClick={() => addAnatomy("Spine")}
+                alt="Spine"
+                title="Spine"
+                coords="591,205,579,403,625,403,613,205"
+                shape="poly"
+              />
+              <area
+                onClick={() => addAnatomy("Hip")}
+                alt="Hip"
+                title="Hip"
+                coords="191,537,337,419"
+                shape="rect"
+              />
+              <area
+                onClick={() => addAnatomy("Hip")}
+                alt="Hip"
+                title="Hip"
+                coords="529,537,673,421"
+                shape="rect"
               />
             </map>
           </div>

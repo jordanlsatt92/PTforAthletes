@@ -15,12 +15,14 @@ const Symptoms = ({ getSymptoms, symptom: { symptoms } }) => {
       window.alert('You currently have no symptoms to download.')
       return null;
     }
+
     var pdfMake = require('pdfmake/build/pdfmake.js');
     var pdfFonts = require('pdfmake/build/vfs_fonts.js');
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     
     var pdf = {
       content: [
+        {text: `PT for Athletes\n`, style: 'header'},
         symptoms.map(symptom => (
           symptom.updates.length === 0 ? 
           `Symptom Name: ${symptom.name.toString()}
@@ -45,6 +47,15 @@ const Symptoms = ({ getSymptoms, symptom: { symptoms } }) => {
           ))
         )) 
       ],
+      styles: {
+        header: {
+          fontSize: 20,
+          bold: true
+        },
+        sympHeader: {
+          bold: true
+        }
+      }
     };
 
     pdfMake.createPdf(pdf).download();
@@ -55,7 +66,7 @@ const Symptoms = ({ getSymptoms, symptom: { symptoms } }) => {
       <section>
         <h1 className="large text-primary">Symptoms</h1>
         <SymptomForm />
-        <div className="posts">
+        <div className="symptoms">
           {symptoms.map((symptom) => (
             <SymptomItem
               key={symptom._id}

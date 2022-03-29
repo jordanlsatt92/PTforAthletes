@@ -11,9 +11,9 @@ const UpdateItem = ({
   auth,
   deleteUpdate,
 }) => (
-  <div className="post bg-white p-1 my-1">
+  <div className="symptom bg-white p-1 my-1">
     <div>
-    <p className="post-date p-1">
+    <p className="symptom-date p-1">
         Updated on <Moment format="MM/DD/YYYY">{date}</Moment>
       </p>
       <button

@@ -7,7 +7,7 @@ const UpdateForm = ({ symptomId, addUpdate }) => {
   const [text, setText] = useState('');
 
   return (
-    <div className='post-form'>
+    <div className='symptom-form'>
       <div className='bg-primary p'>
         <h3>Update Symptom</h3>
       </div>
