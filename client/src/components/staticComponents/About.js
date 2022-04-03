@@ -21,6 +21,9 @@ const About = () => {
       diagram or just type the names in yourself, then write a description of the problem 
       you are having - be as detailed as you want to be. Then click submit!
       <br/><br/>
+      Alternatively, you can click on the "Musculature Anatomy" or "Skeletal Anatomy" buttons and click
+      on the areas you wanted to add to the effected anatomy!
+      <br/><br/>
       Now
       that you have your first symptom, click on the Updates button. You can then update your
       symptom as it gets better (or worse). <br/><br/>Planning a trip to your physical therapist? 
@@ -30,7 +33,7 @@ const About = () => {
       symptoms).
       <br/><br/>
       Worried about your data? Don't be! We believe in privacy. Your health related issues are yours
-      to share with whomever you choose. Your data will never sold or distributed.
+      to share with whomever you choose. Your data will never be sold or distributed.
       <br/><br/>
       <div className="large text-primary">Video Library</div>
       Scroll or search through the video library of exercises and stretches! You never know when new 

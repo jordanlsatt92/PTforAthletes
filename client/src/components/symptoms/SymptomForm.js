@@ -178,6 +178,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
         <input type="submit" className="btn btn-dark my-1" value="Submit" />
         <button
           className="btn btn-dark my-1"
+          type="button"
           onClick={showMusculatureAnatomyHandler}
         >
           {showMusculatureAnatomy ? (
@@ -188,6 +189,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
         </button>
         <button
           className="btn btn-dark my-1"
+          type="button"
           onClick={showSkeletalAnatomyHandler}
         >
           {showSkeletalAnatomy ? (
@@ -198,6 +200,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
         </button>
         {showMusculatureAnatomy && (
           <div>
+            <p>Click on the area of the picture to add the anatomy</p>
             <img
               className="anatomy-picture"
               src={MuscleAnatomy}
@@ -581,6 +584,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
         )}
         {showSkeletalAnatomy && (
           <div>
+            <p>Click on the area of the picture to add the anatomy</p>
             <img
               className="skeletal-picture"
               src={SkeletalAnatomy}
