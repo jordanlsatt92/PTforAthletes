@@ -42,7 +42,7 @@ const SuggestedVideos = ({
         <h1>You currently have zero recorded symptoms. Add symptoms to get suggested videos</h1>
       ) : (
         <div className="form">
-          <h1 className="large text-primary">Videos</h1>
+          <h1 className="large text-primary">Suggested Videos</h1>
           <div className="video-wrapper">
             {filteredVideos.map((video) => (
               <VideoItem key={video._id} video={video} />
