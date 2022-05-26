@@ -1,13 +1,22 @@
+/**
+ * @author Jordan Satterfield
+ * @description Renders a single update for the specified symptom.
+ */
 import React from "react";
-//import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteUpdate } from "../../actions/symptom";
 import Moment from "react-moment";
 
+/**
+ * The UpdateItem component renders the layout for a single symptom update
+ * @param symptomId: the ID of the specified symptom.
+ * @param update: the update to be rendered that includes the update text and date the update was created. 
+ * @returns a rendering of the single update.
+ */
 const UpdateItem = ({
   symptomId,
-  update: { _id, user, text, date },
+  update: { _id, text, date },
   auth,
   deleteUpdate,
 }) => (

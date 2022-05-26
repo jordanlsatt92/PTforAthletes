@@ -1,3 +1,9 @@
+/**
+ * @author Jordan Satterfield
+ * @description Sets the header of an HTTP request to the token to allow
+ * access to private routes. If the token does not exist, the request will
+ * be denied.
+ */
 import axios from "axios";
 
 const setAuthToken = (token) => {

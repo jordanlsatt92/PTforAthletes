@@ -1,10 +1,23 @@
+/**
+ * @author Jordan Satterfield
+ * @description The navigation bar resides at the top of the browser window and displays
+ * links to other parts of the application.
+ */
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 
+/**
+ * @description The Navbar component renders a bar at the top containing links to other parts of the
+ * site. If they user is not logged in, the guest links (Register, Login, About) are shown. If the user
+ * is logged in, the authenticated links (Symptoms, Videos, Suggested Videos, Logout function) are shown.
+ * @param auth: boolean; a part of the state of the application.
+ * @returns the links for guests or authenticated users.
+ */
 export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  // Links for authenticated users.
   const authLinks = (
     <ul>
       <li>
@@ -25,6 +38,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </ul>
   );
 
+  // Links for websites guests (people not logged in).
   const guestLinks = (
     <ul>
       <li>

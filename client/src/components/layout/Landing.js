@@ -1,6 +1,14 @@
+/**
+ * @author Jordan Satterfield
+ * @description Renders the landing page when the site is visited.
+ */
 import React from "react";
 import { Link } from 'react-router-dom';
 
+/**
+ * @description Renders the landing page of the site. Contains the background and
+ * login and register buttons.
+ */
 export const Landing = () => {
   return (
     <section className="landing">

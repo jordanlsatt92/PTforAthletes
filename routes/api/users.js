@@ -1,3 +1,9 @@
+/**
+ * @author Jordan Satterfield
+ * @description Contains all HTTP requests for users including
+ * user registration and updating the user's password.
+ */
+
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
@@ -5,10 +11,12 @@ const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-// @route   Post api/users
-// @desc    Register user
-// @access  Public
 
+/**
+ * @route Post api/users
+ * @description Register user
+ * @access Public
+*/
 router.post(
   "/",
   check("name", "Name is required.").notEmpty(),
@@ -74,15 +82,15 @@ router.post(
       console.error(err.message);
       res.status(500).send("Server Error");
     }
-
-    //    res.send("User route");
   }
 );
 
-// @route   Put api/users
-// @desc    Update user password
-// @access  Public
 
+/**
+ * @route Put api/users
+ * @description Update user password
+ * @access Public
+ */
 router.put(
   "/",
   check("email", "A valid email is required").notEmpty(),

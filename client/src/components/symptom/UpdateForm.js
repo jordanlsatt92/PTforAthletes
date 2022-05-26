@@ -1,8 +1,18 @@
+/**
+ * @author Jordan Satterfield
+ * @description Renders the update form which includes a single text field of "Description."
+ */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addUpdate } from '../../actions/symptom';
 
+/**
+ * @description The UpdateForm component renders the form for creating an update for a specific symptom.
+ * @param symptomId: the ID of the symptom to be updated.
+ * @param addUpdate: the Redux action that creates the update and adds the update to the database. 
+ * @returns a rendering of the symptom form.
+ */
 const UpdateForm = ({ symptomId, addUpdate }) => {
   const [text, setText] = useState('');
 

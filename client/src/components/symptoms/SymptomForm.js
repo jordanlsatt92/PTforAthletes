@@ -1,3 +1,11 @@
+/**
+ * @author Jordan Satterfield
+ * @description The SymptomForm component renders the form that allows the user to enter a
+ * new symptom. This includes the symptom name, effected_parts (related anatomy; a comma separated
+ * string of anatomy), and the symptom description. It contains the interactive anatomical diagrams 
+ * of musculature and skeletal anatomy that when clicked will add that particular anatomy to the 
+ * effected_parts. 
+ */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -6,31 +14,52 @@ import MuscleAnatomy from "../../img/MusculatureAnatomy.jpg";
 import SkeletalAnatomy from "../../img/SkeletalAnatomy.jpg";
 import { setAlert } from "../../actions/alert";
 
+/**
+ * @description Renders the form needed for creating a new symptom
+ * @param addSymptom: the Redux action that creates the new symptom and records the symptom
+ * in the database.
+ * @param setAlert: the Redux action that displays a notification when a symptom is created
+ * or when the anatomical diagrams are clicked and the anatomy is added to the symptoms effected_parts.
+ * @returns 
+ */
 const SymptomForm = ({ addSymptom, setAlert }) => {
+  // Set the initial state of the form data.
   const [formData, setFormData] = useState({
     name: "",
     effected_parts: "",
     description: "",
   });
 
+  // Descructuring of the form data.
   const { name, effected_parts, description } = formData;
 
+  // Update the form data as the user enters characters.
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // State for rendering musculature anatomical diagram
   const [showMusculatureAnatomy, setshowMusculatureAnatomy] = useState(false);
 
+  // Handler for discplaying the musculature anatomy
   const showMusculatureAnatomyHandler = () => {
     if (!showMusculatureAnatomy) setshowMusculatureAnatomy(true);
     else setshowMusculatureAnatomy(false);
   };
 
+  // State for rendering the skeletal anatomical diagram.
   const [showSkeletalAnatomy, setShowSkeletalAnatomy] = useState(false);
 
+  // Handler for displaying the skeletal anatomy.
   const showSkeletalAnatomyHandler = () => {
     if (!showSkeletalAnatomy) setShowSkeletalAnatomy(true);
     else setShowSkeletalAnatomy(false);
   };
+
+  /**
+   * @description Helper function that adds the name of the specified anatomy in the anatomical
+   * diagrams to the effected_parts text field.
+   * @param str: the string of anatomical area's name. 
+   */
   const addAnatomy = (str) => {
     if (formData.effected_parts.toLowerCase().includes(str.toLowerCase())) {
       setAlert(
@@ -82,50 +111,6 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
     }
     setAlert(str + " group has been added", "success");
   };
-
-  // const MusculatureAnatomy = () => {
-  //   return (
-  //     <div>
-  //       <img
-  //         className="anatomy-picture"
-  //         src={MuscleAnatomy}
-  //         alt="Musculature Anatomy"
-  //         useMap="#image-map"
-  //       />
-  //       <map name="image-map">
-  //         <area
-  //           onClick={addAnatomy('chest')}
-  //           alt="chest"
-  //           title="chest"
-  //           coords="126,222,165,181,250,181,290,222,265,266,142,266"
-  //           shape="poly"
-  //         />
-  //         <area
-  //           onClick={() => {
-  //             console.log("abdominals clicked");
-  //           }}
-  //           alt="abdominals"
-  //           title="abdominals"
-  //           coords="132,268,278,268,267,395,198,481,135,388"
-  //           shape="poly"
-  //         />
-  //         <area
-  //           onClick={() => {
-  //             console.log("biceps clicked");
-  //           }}
-  //           alt="biceps"
-  //           title="biceps"
-  //           coords={[
-  //             "119,222,94,258,83,322,121,322,127,286",
-  //             "289,230,315,262,319,315,293,318,285,286",
-  //             "874,242,885,282,874,342,857,291",
-  //           ]}
-  //           shape="poly"
-  //         />
-  //       </map>
-  //     </div>
-  //   );
-  // };
 
   return (
     <div className="symptom-form">
@@ -207,6 +192,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
               alt="Musculature Anatomy"
               useMap="#image-map"
             />
+            {/** Mapping of areas for the Musculature Anatomy diagram */}
             <map name="image-map">
               <area
                 onClick={() => addAnatomy("Chest")}
@@ -591,6 +577,7 @@ const SymptomForm = ({ addSymptom, setAlert }) => {
               alt="Skeletal Anatomy"
               useMap="#image-map1"
             />
+            {/** Mapping of the Skeletal Anatomy diagram */}
             <map name="image-map1">
               <area
                 onClick={() => addAnatomy("Neck")}

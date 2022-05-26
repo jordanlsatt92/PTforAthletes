@@ -1,20 +1,36 @@
+/**
+ * @author Jordan Satterfield
+ * @description renders the form associated with logging on to the site.
+ */
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
 
+/**
+ * @description The Login compenent renders the form associated with logging on to the site.
+ * The login Redux action is used to log the user on. Upon successful login, the user is
+ * redirected to the symptoms page.
+ * @param login: Redux action that authenticates the user.
+ * @param isAuthenticated: boolean that if true redirects the user to the symptoms page.
+ * @returns the login form.
+ */
 const Login = ({ login, isAuthenticated }) => {
+  // Initialize the form data.
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+  // Destructure the form data.
   const { email, password } = formData;
 
+  // Update the form data as the user enters characters.
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // Upon submission, dispatch the login Redux action.
   const onSubmit = async e => {
     e.preventDefault();
     login(email, password);

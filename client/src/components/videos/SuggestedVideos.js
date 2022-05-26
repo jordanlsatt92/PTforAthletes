@@ -1,3 +1,11 @@
+/**
+ * @author Jordan Satterfield
+ * @description The SuggestedVideos component renders the thumbnails of
+ * the videos related to the user's symptoms. This is done by the findVideos
+ * function explained in more detail below. Upon clicking one of the video 
+ * thumbnails, the user is redirected to a view displaying the playable single
+ * video.
+ */
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -5,6 +13,12 @@ import { getVideos } from "../../actions/video";
 import VideoItem from "./VideoItem";
 import { getSymptoms } from "../../actions/symptom";
 
+/**
+ * @description Renders the videos related to the user's symptoms.
+ * @params video: an array of all the videos in the database returned by the getVideos Redux action.
+ * symptom: an array of all the user's symptoms in the database returned by the getSymptoms Redux action.
+ * @returns all videos that target a specific muscle or group of muscles found in the user's symptoms.
+ */
 const SuggestedVideos = ({
   getVideos,
   getSymptoms,
@@ -16,6 +30,13 @@ const SuggestedVideos = ({
     getSymptoms();
   }, [getVideos, getSymptoms]);
 
+  /**
+   * @description Helper function that for each video checks to see if a symptom's effected_parts (anatomy)
+   * is in the video's related_parts (related anatomy). Returns an array of videos that target the symptom's
+   * anatomy.
+   * @param vid: a video returned by the getVideos Redux action. 
+   * @returns an array of videos that contain the same anatomy or some of the anatomy listed in the symptom.
+   */
   const findVideos = (vid) => {
     if (symptoms.length === 0){
         return;
@@ -24,8 +45,8 @@ const SuggestedVideos = ({
         let symp = symptoms[i];
         for (let j = 0; j < symp.effected_parts.length; j++){
             if (vid.related_parts.toString().toLowerCase().includes(symp.effected_parts[j].toString().toLowerCase())){
-              console.log(symp.effected_parts[j].toString().toLowerCase());
-                return true;
+              //console.log(symp.effected_parts[j].toString().toLowerCase());
+              return true;
             } 
         }
     }

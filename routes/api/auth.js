@@ -1,3 +1,10 @@
+/**
+ * @author Jordan Satterfield
+ * @description Contains the route for user authentication. Ensures
+ * user exists and that the entered password matches the password in 
+ * the database using bcrypt. Returns JSON web token to allow for future
+ * HTTP requests.
+ */
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
@@ -6,6 +13,8 @@ const { check, validationResult } = require("express-validator");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+
+/* Testing routes
 
 // @route   Get api/auth
 // @desc    Test route
@@ -22,11 +31,15 @@ router.get("/", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+*/
 
-// @route   Post api/auth
-// @desc    Authenticate user and get token
-// @access  Public
-
+/**
+ * @route Post api/auth
+ * @description Authenticate user when the user signs in to
+ * their account. Checks if user exists using the email, then 
+ * verifies password is correct with bcrypt.
+ * @access Public
+ */
 router.post(
   "/",
   check("email", "Please enter a valid email").isEmail(),
@@ -77,8 +90,6 @@ router.post(
       console.error(err.message);
       res.status(500).send("Server Error");
     }
-
-    //    res.send("User route");
   }
 );
 

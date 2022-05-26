@@ -1,3 +1,8 @@
+/**
+ * @author Jordan Satterfield
+ * @description This file contains all of the redux actions associated with account registration, login,
+ * logout, password reset, and user authentication.
+ */
 import axios from "axios";
 import { setAlert } from "./alert";
 import {
@@ -9,12 +14,15 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
   RESET_PASSWORD,
-  RESET_FAIL
+  RESET_FAIL,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
-// Load user
-export const loadUser = () => async dispatch => {
+/**
+ * @description loadUser Redux action sets the JSON web token in the local storage of the browser.
+ * @returns the token that allows the user to navigate private routes on the site.
+ */
+export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -32,7 +40,14 @@ export const loadUser = () => async dispatch => {
     });
   }
 };
-// Register User
+
+/**
+ * @description register Redux action creates a new user in the database.
+ * @param name: the entered user's name
+ * @param email: the entered email.
+ * @param password: the entered password.
+ * @param security_question: the entered security question answer.
+ */
 export const register =
   ({ name, email, password, security_question }) =>
   async (dispatch) => {
@@ -65,11 +80,12 @@ export const register =
     }
   };
 
-  // Login User
-export const login =
-( email, password ) =>
-async (dispatch) => {
-
+/**
+ * @description login Redux action that logs in the user upon entering their email and password.
+ * @param email: the user's email.
+ * @param password: the user's password. 
+ */  
+export const login = (email, password) => async (dispatch) => {
   const body = { email, password };
 
   try {
@@ -93,35 +109,47 @@ async (dispatch) => {
   }
 };
 
-export const logout = () => async dispatch => {
-    dispatch({ type: LOGOUT});
+/**
+ * @description logout Redux action the logs the user out of their account.
+ */
+export const logout = () => async (dispatch) => {
+  dispatch({ type: LOGOUT });
 };
 
-export const reset_password = ({ email, security_question, password }) => async dispatch =>{
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+/**
+ * @description reset_password Redux action that updates the user's password in the database
+ * with the newly entered password
+ * @param email: user's email.
+ * @param security_question: the answer to the security question the user entered upon registering their account.
+ * @param password: the user's new password. 
+ */
+export const reset_password =
+  ({ email, security_question, password }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  const body = JSON.stringify({ email, password, security_question });
+    const body = JSON.stringify({ email, password, security_question });
 
-  try {
-    await axios.put("/api/users", body, config);
-    dispatch({
-      type: RESET_PASSWORD
-    });
+    try {
+      await axios.put("/api/users", body, config);
+      dispatch({
+        type: RESET_PASSWORD,
+      });
 
-    dispatch(setAlert('Your password has been updated', 'success'));
-  } catch (err) {
-    const errors = err.response.data.errors;
+      dispatch(setAlert("Your password has been updated", "success"));
+    } catch (err) {
+      const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+
+      dispatch({
+        type: RESET_FAIL,
+      });
     }
-
-    dispatch({
-      type: RESET_FAIL,
-    });
-  }
-}
+  };

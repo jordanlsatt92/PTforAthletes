@@ -1,3 +1,7 @@
+/**
+ * @author Jordan Satterfield
+ * @description renders a single symptom according to the layout below.
+ */
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -7,6 +11,13 @@ import UpdateForm from "./UpdateForm";
 import { getSymptom } from "../../actions/symptom";
 import UpdateItem from './UpdateItem';
 
+/**
+ * @description The Symptom component renders a single symptom. This rendering includes all the updates
+ * for the specified symptom
+ * @param getSymptom: the Redux action that returns a single symptom.
+ * @param symptom: the symptom containing all the updates to be rendered.
+ * @returns a rendering of the symptom and all updates for that symptom.
+ */
 const Symptom = ({ getSymptom, symptom: { symptom, loading } }) => {
   const { id } = useParams();
   useEffect(() => {

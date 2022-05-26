@@ -1,3 +1,11 @@
+/**
+ * @author Jordan Satterfield
+ * @description Contains routes for user profiles and deletion 
+ * of user, symptoms and profile; this is
+ * unimplemented on the front end. All requests with "auth" in
+ * the request are private; the user must have a valid JSON web
+ * token to make the request otherwise it is rejected.
+ */
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
@@ -5,10 +13,11 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const { check, validationResult } = require("express-validator");
 
-// @route   Get api/profile/me
-// @desc    Get current user's profile
-// @access  private
-
+/**
+ * @route Get api/profile/me
+ * @description Get the current user's profile.
+ * @access Private
+ */
 router.get("/me", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id }).populate(
@@ -26,10 +35,11 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
-// @route   Get api/profile
-// @desc    Create or update user profile
-// @access  private
-
+/**
+ * @route Get api/profile
+ * @description Create or update user profile.
+ * @access Private
+ */
 router.post(
   "/",
   auth,
@@ -75,10 +85,11 @@ router.post(
   }
 );
 
-// HOW TO GET SYMPTOMS BY USER ID
-// @route   Get api/profile/user/:user_id
-// @desc    Get user profile by user ID
-// @access  private
+/**
+ * @route Get api/profile/user/:user_id
+ * @description Get user's profile by user ID
+ * @access Private
+ */
 router.get("/user/:user_id", auth, async ({ params: { user_id}}, res) => {
     try {
         const profile = await Profile.findOne({ user: user_id }).populate('user', ['name']);
@@ -98,9 +109,11 @@ router.get("/user/:user_id", auth, async ({ params: { user_id}}, res) => {
   }
 );
 
-// @route   Delete api/profile/
-// @desc    Delete user profile, user and symptoms
-// @access  private
+/**
+ * @route Delete api/profile
+ * @description Delete user profile, user symptoms, and user.
+ * @access Private
+ */
 router.delete('/', auth, async (req, res) => {
     try {
       // Remove user symptoms

@@ -1,13 +1,20 @@
+/**
+ * @author Jordan Satterfield
+ * @description This file contains the various HTTP requests for 
+ * all videos including posting a new video to the database, retrieving
+ * all videos, and retrieving a single video.
+ */
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 const Video = require("../../models/Video");
 
-// @route   video api/videos
-// @desc    Create a video in database
-// @access  Public
-
+/**
+ * @route video api/videos
+ * @description Create a video in the database.
+ * @access Public
+ */
 router.post(
   "/",
   check("url", "The youtube url is required.").notEmpty(),
@@ -47,10 +54,11 @@ router.post(
   }
 );
 
-// @route   video api/videos
-// @desc    Get all videos in database
-// @access  Private
-
+/**
+ * @route video api/videos
+ * @description Get all videos in database
+ * @access Private
+ */
 router.get("/", auth, async (req, res) => {
   try {
     const videos = await Video.find();
@@ -61,10 +69,11 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// @route   video api/videos/:video_id
-// @desc    Get video by id
-// @access  Private
-
+/**
+ * @route   video api/videos/:video_id
+ * @description    Get video by id
+ * @access  Private
+*/
 router.get(
   "/:id",
   auth,

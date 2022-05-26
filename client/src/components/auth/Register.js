@@ -1,3 +1,7 @@
+/**
+ * @author Jordan Satterfield
+ * @description renders the form needed for account registration.
+ */
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -5,7 +9,17 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
+/**
+ * @description The Register component renders a form for account registration. This includes a
+ * name field, email field, password and password duplicate fields, and a field where the user
+ * can enter an answer to the security question.
+ * @param setAlert: the setAlert Redux action that displays alerts.
+ * @param register: the Redux action that creates the user in the database.
+ * @param isAuthenticated: boolean that if true allows the user to see the protected paths of the site.
+ * @returns The form associated with registering a new account.
+ */
 const Register = ({ setAlert, register, isAuthenticated }) => {
+  // Initilize the form data.
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,11 +28,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     security_question: "",
   });
 
+  // Destructure the form data.
   const { name, email, password, password2, security_question } = formData;
 
+  // Update the form data as the user enters new characters.
   const onChange = (e) => 
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  /* Upon submission, create a new account if the email does not already exist in the 
+  database. Dispatch the setAlert Redux action if the passwords do not match. */
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {

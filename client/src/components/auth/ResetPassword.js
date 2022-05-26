@@ -1,3 +1,8 @@
+/**
+ * @author Jordan Satterfield
+ * @description Renders the reset password form and calls the reset_password Redux action.
+ * The password is then updated in the Users collection in the database.
+ */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -5,7 +10,17 @@ import { connect } from "react-redux";
 import { reset_password } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
 
+/**
+ * The Reset Password component displays the form that allows users to reset their passwords.
+ * Upon successful entering of the answer to the security question the user entered when creating
+ * the account, the reset_password Redux action is called and the user's password is updated in the 
+ * database.
+ * @param setAlert: the Redux action that is called to display a successful password reset or
+ * invalid credentials alert.
+ * @returns the reset password form.
+ */
 const ResetPassword = ({ setAlert, reset_password }) => {
+  // Set the initial state of the form data.
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,11 +28,14 @@ const ResetPassword = ({ setAlert, reset_password }) => {
     security_question: "",
   });
 
+  // Destructuring of the form data.
   const { email, password, password2, security_question } = formData;
 
+  //Update the form data as the user enters characters.
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // Dispatching the reset_password Redux action
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
