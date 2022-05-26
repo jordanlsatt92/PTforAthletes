@@ -1,3 +1,9 @@
+/**
+ * @author Jordan Satterfield
+ * @description Implements a user model for users in the database
+ * using Mongoose (Mongo DB modeling tool). Requires user's name,
+ * email, password, security question answer.
+ */
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({

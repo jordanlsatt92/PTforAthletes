@@ -1,3 +1,10 @@
+/**
+ * @author Jordan Satterfield
+ * @description The app.js file acts as a container for all components
+ * listed below. Allows routing to different areas of the site and sets
+ * certain routes as private--only allowing access if the user is logged
+ * in and has a valid JSON web token.
+ */
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
@@ -10,10 +17,11 @@ import Symptoms from "./components/symptoms/Symptoms";
 import Symptom from "./components/symptom/Symptom";
 import Videos from "./components/videos/Videos";
 import Video from "./components/video/Video";
-import "./App.css";
 import About from "./components/staticComponents/About";
 import SuggestedVideos from "./components/videos/SuggestedVideos";
 import TermsAndConditions from "./components/staticComponents/TermsAndConditions";
+import "./App.css";
+
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";

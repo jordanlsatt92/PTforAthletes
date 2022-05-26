@@ -1,3 +1,10 @@
+/**
+ * @author Jordan Satterfield
+ * @description Contains the reducer for user Authentication. 
+ * Sets and updates the state based upon the dispatched actions.
+ */
+
+// Redux actions for authentication
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -22,6 +29,7 @@ function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    // Updates the state with the user and sets authentication to true.
     case USER_LOADED:
       return {
         ...state,
@@ -29,6 +37,8 @@ function authReducer(state = initialState, action) {
         loading: false,
         user: payload
       };
+    /* Updates the state with the JSON web token upon successful
+       registration or login */
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
@@ -38,6 +48,7 @@ function authReducer(state = initialState, action) {
         isAuthenticated: true,
         loading: false
       };
+    // Updates the state by removing any data about the user and sets authenticated to false.
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGIN_FAIL:

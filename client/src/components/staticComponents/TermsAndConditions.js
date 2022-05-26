@@ -1,5 +1,12 @@
+/**
+ * @author Jordan Satterfield
+ * @description renders the site terms and conditions.
+ */
 import React from "react";
 
+/**
+ * @description renders the terms and conditions for the site.
+ */
 const TermsAndConditions = () => {
   return (
     <div className="container">
@@ -337,7 +344,6 @@ const TermsAndConditions = () => {
       that if an unenforceable provision is modified or disregarded in
       accordance with this paragraph, then the rest of these conditions of use
       will remain in effect as written; and
-      <br />
       that any unenforceable provision will remain as written in any
       circumstances other than those in which the provision is held to be
       unenforceable. No waiver of any of the privacy policy or these conditions

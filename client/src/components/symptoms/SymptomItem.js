@@ -1,3 +1,7 @@
+/**
+ * @author Jordan Satterfield
+ * @description renders the specified format for a single symptom.
+ */
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -5,6 +9,13 @@ import Moment from "react-moment";
 import { connect } from "react-redux";
 import { deleteSymptom } from "../../actions/symptom";
 
+/**
+ * @description The SymptomItem contains the layout for each specific symptom. This includes the symptom name,
+ * effected_parts (effected anatomy), desciption, a button to redirect the user to all the symptom updates,
+ * the date the symptom was created, and a button to delete the symptom.
+ * @param symptom: the symptom passed in as the prop.
+ * @returns a display of the symptom.
+ */
 const SymptomItem = ({
   auth,
   deleteSymptom,

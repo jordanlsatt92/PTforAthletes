@@ -1,6 +1,11 @@
+/**
+ * @author Jordan Satterfield
+ * @description Verifies user has a JSON web token and that the
+ * token is valid. If the token is not valid, returns error message
+ * stating that there is no token and authorization is denied.
+ */
 const jwt = require('jsonwebtoken');
 const config = require('config');
-
 
 module.exports = function(req, res, next) {
     // Get token from the header

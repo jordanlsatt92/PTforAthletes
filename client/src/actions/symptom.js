@@ -1,3 +1,8 @@
+/**
+ * @author Jordan Satterfield
+ * @description This file contains all Redux actions for retrieving and deleting 
+ * symptoms and symptom updates.
+ */
 import axios from "axios";
 import { setAlert } from "./alert";
 import {
@@ -11,7 +16,10 @@ import {
 } from './types';
 
 
-// Get Symptoms
+/**
+ * @description: getSymptoms Redux action returns all of the user's symptoms in the database.
+ * @returns all of the user's symptoms.
+ */
 export const getSymptoms = () => async dispatch => {
     try {
         const res = await axios.get(`/api/symptoms/me`);
@@ -28,7 +36,10 @@ export const getSymptoms = () => async dispatch => {
     }
 }
 
-// Delete Symptom
+/**
+ * @description deleteSymptom Redux action deletes the specified symptom by the symptom ID.
+ * @param id: the ID of the symptom to be deleted. 
+ */
 export const deleteSymptom = id => async dispatch => {
     try {
         await axios.delete(`/api/symptoms/${id}`);
@@ -47,7 +58,11 @@ export const deleteSymptom = id => async dispatch => {
     }
 }
 
-// Add Symptom
+/**
+ * @description addSymptom Redux action creates a new symptom in the database using
+ * the form data entered by the user.
+ * @param formData: the data entered by the user regarding the new symptom (name, effected anatomy, and description).
+ */
 export const addSymptom = (formData) => async dispatch => {
     try {
         const res = await axios.post(`/api/symptoms`, formData);
@@ -66,7 +81,11 @@ export const addSymptom = (formData) => async dispatch => {
     }
 }
 
-// Get Symptoms
+/**
+ * @description getSymptom Redux action that retrieves a single symptom by the symptom ID.
+ * @param id: the ID of the symptom to be retrieved. 
+ * @returns a single symptom from the database.
+ */
 export const getSymptom = (id) => async dispatch => {
     try {
         const res = await axios.get(`/api/symptoms/${id}`);
@@ -83,7 +102,12 @@ export const getSymptom = (id) => async dispatch => {
     }
 }
 
-// Add update
+/**
+ * @description addUpdate Redux action adds the update form data entered by the user to the
+ * symptom in the database.
+ * @param symptomId: ID of the symptom that is being updated. 
+ * @param formData: the form data entered by the user regarding the update (update description). 
+ */
 export const addUpdate = (symptomId, formData) => async dispatch => {
     try {
         const res = await axios.post(`/api/symptoms/update/${symptomId}`, formData);
@@ -102,7 +126,12 @@ export const addUpdate = (symptomId, formData) => async dispatch => {
     }
 }
 
-// Delete update
+/**
+ * @description deleteUpdate Redux action deletes the specified symptom update from the symptom 
+ * in the database.
+ * @param symptomId: ID of the symptom from which the update will be deleted.
+ * @param updateId: the ID of the update to be deleted. 
+ */
 export const deleteUpdate = (symptomId, updateId) => async dispatch => {
     try {
         await axios.delete(`/api/symptoms/update/${symptomId}/${updateId}`);

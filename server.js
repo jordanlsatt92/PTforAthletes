@@ -1,3 +1,8 @@
+/**
+ * @author Jordan Satterfield
+ * This file contains defines the routes using Express.js used for PT for Athletes.
+ */
+
 const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path"); // Comment out during development

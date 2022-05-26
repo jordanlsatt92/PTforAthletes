@@ -1,3 +1,11 @@
+/**
+ * @author Jordan Satterfield
+ * @description Contains all the HTTP routes for symptoms.
+ * All requests with "auth" in the request are private routes.
+ * The user must have a valid JSON web token to make the request
+ * otherwise it is rejected.
+ */
+
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
@@ -5,10 +13,11 @@ const auth = require("../../middleware/auth");
 const Symptom = require("../../models/Symptom");
 const User = require("../../models/User");
 
-// @route   symptom api/symptoms
-// @desc    Create a symptom
-// @access  Private
-
+/**
+ * @route symptom api/symptoms
+ * @description Create a symptom in the database.
+ * @access Private
+ */
 router.post(
   "/",
   auth,
@@ -50,9 +59,11 @@ router.post(
   }
 );
 
-// @route   symptom api/symptoms/user/:user_id
-// @desc    Get symptoms by user id
-// @access  Private
+/**
+ * @route symptom api/symptoms/user/:user_id
+ * @description Get all of the user's symptoms by user ID
+ * @access Private
+ */
 
 router.get("/user/:user_id", auth, async ({ params: { user_id } }, res) => {
   try {
@@ -71,9 +82,11 @@ router.get("/user/:user_id", auth, async ({ params: { user_id } }, res) => {
   }
 });
 
-// @route   symptom api/symptoms/user/:user_id
-// @desc    Get symptoms by user id
-// @access  Private
+/**
+ * @route symptom api/symptoms/user/:user_id 
+ * @description Get all all of the user's symptoms by user ID
+ * @access Private
+ */
 
 router.get("/me", auth, async (req, res) => {
   try {
@@ -97,9 +110,11 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
-// @route   Get api/symptom/:id
-// @desc    Get symptoms by symptom id
-// @access  Private
+/**
+ * @route Get api/symptom/:id
+ * @description Get symptom by symptom id
+ * @access Private
+ */
 
 router.get("/:id", auth, async (req, res) => {
   try {
@@ -119,9 +134,11 @@ router.get("/:id", auth, async (req, res) => {
   }
 });
 
-// @route   Delete api/symptom/:id
-// @desc    Delete symptoms by symptom id
-// @access  Private
+/**
+ * @route Delete api/symptom/:id
+ * @description Delete symptom by symptom ID
+ * @access Private
+ */
 
 router.delete("/:id", auth, async (req, res) => {
   try {
@@ -148,9 +165,11 @@ router.delete("/:id", auth, async (req, res) => {
   }
 });
 
-// @route   symptom api/symptoms/update/:id
-// @desc    Update a symptom
-// @access  Private
+/**
+ * @route Symptom api/symptoms/update/:id
+ * @description Create an update for a specific symptom
+ * @access Private
+ */
 
 router.post(
   "/update/:id",
@@ -188,9 +207,11 @@ router.post(
   }
 );
 
-// @route   Delete api/symptoms/update/:id/:update_id
-// @desc    Delete update
-// @access  Private
+/**
+ * @route Delete api/symptoms/update/:id/:update_id
+ * @description Delete update in symptom updates by update ID
+ * @access Private
+ */
 
 router.delete("/update/:id/:update_id", auth, async (req, res) => {
   try {

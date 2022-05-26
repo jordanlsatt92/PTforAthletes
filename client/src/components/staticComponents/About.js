@@ -1,6 +1,16 @@
+/**
+ * @author Jordan Satterfield
+ * @description renders information about the site.
+ */
 import React from "react";
 import Symptom_Tutorial from "../../img/Symptom_Tutorial.JPG";
 
+/**
+ * @description Renders information regarding the site. This information includes a brief description
+ * of the site including the symptoms, video library, and suggested videos and offers a brief tutorial of
+ * how to use the site.
+ * @returns a rendering of the site information.
+ */
 const About = () => {
   return <div className="container">
       <h1 className="large text-primary">About Us</h1>
