@@ -2,7 +2,7 @@
 Virtual Physical Therapist Application
 The site can be reached at https://ptforathletes.herokuapp.com/
 
-PT for Athletes is a Mongo DB, Express.js, React.js, and Node.js (MERN) full stack web application.
+PT for Athletes is a Mongo DB, Express.js, React.js, and Node.js (MERN) full stack RESTful web application.
 
 PT for Athletes is a web application that acts as a virtual physical therapist. The application consists of multiple parts, one of which is a searchable video library. The video library consists of exercises and stretches that educate the user on injuries and pain and the exercises and stretches that improve and prevent those symptoms. The users can follow along with the videos or simply educate themselves on the techniques used to improve or prevent injury. The videos are created by physical therapists that carry the degrees and authority to recommend exercises and stretches that have shown to improve the conditions of injuries.
 
